@@ -51,5 +51,16 @@ namespace ATD {
         public T Peek() {
             return arr[front];
         }
+
+        public bool Contains(T elem) {
+            int currElem=front;
+            int lastElem = back;
+            while (currElem <= lastElem) {
+                if (arr[currElem].Equals(elem))
+                    return true;
+                currElem++;
+            }
+            return false;
+        }
     }
 }
