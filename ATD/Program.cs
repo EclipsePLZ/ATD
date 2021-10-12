@@ -3,7 +3,7 @@
 namespace ATD {
     class Program {
         static void Main(string[] args) {
-            Console.WriteLine("Hello World!");
+            MyQueue<int> queue = new MyQueue<int> ();
         }
     }
 }
