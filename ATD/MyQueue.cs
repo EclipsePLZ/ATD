@@ -22,11 +22,15 @@ namespace ATD {
         }
 
         public void Add(T newElem) {
-            if (back == size - 1) {
+            if (IsElemLastInArray(back)) {
                 back = -1;
                 numOfElem = 0;
             }
             InsertElemIntoArray(newElem);
+        }
+
+        private bool IsElemLastInArray(int elemNum) {
+            return (elemNum == size - 1);
         }
 
         private void InsertElemIntoArray(T elem) {
@@ -36,9 +40,14 @@ namespace ATD {
         }
 
         public void Remove() {
-
+            if (IsElemLastInArray(front))
+                front = 0;
+            else
+                front++;
+            if(numOfElem!=0)
+                numOfElem--;
         }
-
+       
         public T Peek() {
             return arr[front];
         }
