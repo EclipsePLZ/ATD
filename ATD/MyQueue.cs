@@ -58,7 +58,10 @@ namespace ATD {
             while (currElem <= lastElem) {
                 if (arr[currElem].Equals(elem))
                     return true;
-                currElem++;
+                if (IsElemLastInArray(currElem))
+                    currElem = -1;
+                else
+                    currElem++;
             }
             return false;
         }
