@@ -54,14 +54,15 @@ namespace ATD {
 
         public bool Contains(T elem) {
             int currElem=front;
-            int lastElem = back;
-            while (currElem <= lastElem) {
+            int allElem = numOfElem;
+            while (allElem>0) {
                 if (arr[currElem].Equals(elem))
                     return true;
                 if (IsElemLastInArray(currElem))
                     currElem = -1;
                 else
                     currElem++;
+                allElem--;
             }
             return false;
         }
