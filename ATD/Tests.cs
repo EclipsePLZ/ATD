@@ -23,7 +23,7 @@ namespace ATD {
                 ShowInformation("Contains", i, result);
             }
 
-            //start Remove half elements
+            //start Remove elements
             for (int i=0; i<size; i++) {
                 queue.Remove();
                 ShowInformation("Remove", queue);
@@ -38,6 +38,26 @@ namespace ATD {
                 bool result = queue.Contains(i);
                 ShowInformation("Contains", i, result);
             }
+        }
+
+        public void TestPresentation(int size) {
+            MyQueue<int> queue = new MyQueue<int>(size);
+            for (int i = 1; i <= size; i++) {
+                queue.Add(i);
+                ShowInformation("Add", queue, i);
+            }
+            queue.Remove();
+            ShowInformation("Remove", queue);
+            for (int i=1; i <= 2; i++) {
+                queue.Add(size + i);
+                ShowInformation("Add", queue, size + i);
+            }
+            queue.Remove();
+            ShowInformation("Remove", queue);
+            queue.Remove();
+            ShowInformation("Remove", queue);
+            queue.Add(8);
+            ShowInformation("Add", queue, 8);
         }
 
         private void ShowInformation(string opearation, MyQueue<int> queue, int element) {

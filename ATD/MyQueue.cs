@@ -24,7 +24,8 @@ namespace ATD {
         public void Add(T newElem) {
             if (IsElemLastInArray(back)) {
                 back = -1;
-                numOfElem = 0;
+                //numOfElem = 0;
+                //front = 0;
             }
             InsertElemIntoArray(newElem);
         }
@@ -35,20 +36,31 @@ namespace ATD {
 
         private void InsertElemIntoArray(T elem) {
             back++;
+            if (back == front) {
+                numOfElem = 0;
+            }
             arr[back] = elem;
             numOfElem++;
         }
 
         public void Remove() {
-            if (IsElemLastInArray(front))
-                front = 0;
-            else
+            if (numOfElem != 0) {
+                if (IsElemLastInArray(front))
+                    front = -1;
                 front++;
-            if(numOfElem!=0)
                 numOfElem--;
+            }
+            else
+                ShowErrorMessage("Очередь пуста");
+        }
+
+        private void ShowErrorMessage(string mess) {
+            Console.WriteLine("Ошибка: " + mess);
         }
        
         public T Peek() {
+            if (numOfElem==0)
+                ShowErrorMessage("Очередь пуста");
             return arr[front];
         }
 
@@ -60,8 +72,7 @@ namespace ATD {
                     return true;
                 if (IsElemLastInArray(currElem))
                     currElem = -1;
-                else
-                    currElem++;
+                currElem++;
                 allElem--;
             }
             return false;

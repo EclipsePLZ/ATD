@@ -5,6 +5,7 @@ namespace ATD {
         static void Main(string[] args) {
             Tests tests = new Tests();
             tests.StartRandomDataTesting(5);
+            //tests.TestPresentation(5);
         }
     }
 }
