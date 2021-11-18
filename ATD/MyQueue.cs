@@ -22,12 +22,19 @@ namespace ATD {
         }
 
         public void Add(T newElem) {
-            if (IsElemLastInArray(back)) {
-                back = -1;
-                //numOfElem = 0;
-                //front = 0;
+            if (numOfElem == size) {
+                ShowErrorMessage("Невозможно добавить элемент, очередь заполнена");
             }
-            InsertElemIntoArray(newElem);
+            else {
+                if (IsElemLastInArray(back)) {
+                    back = -1;
+                }
+                InsertElemIntoArray(newElem);
+            }
+        }
+
+        public int GetSize() {
+            return numOfElem;
         }
 
         private bool IsElemLastInArray(int elemNum) {
@@ -35,12 +42,9 @@ namespace ATD {
         }
 
         private void InsertElemIntoArray(T elem) {
-            back++;
-            if (back == front) {
-                numOfElem = 0;
-            }
-            arr[back] = elem;
-            numOfElem++;
+                back++;
+                arr[back] = elem;
+                numOfElem++;
         }
 
         public void Remove() {
@@ -51,7 +55,7 @@ namespace ATD {
                 numOfElem--;
             }
             else
-                ShowErrorMessage("Очередь пуста");
+                ShowErrorMessage("Невозможно удалить элемент, очередь пуста");
         }
 
         private void ShowErrorMessage(string mess) {

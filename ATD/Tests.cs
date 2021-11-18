@@ -54,10 +54,13 @@ namespace ATD {
             }
             queue.Remove();
             ShowInformation("Remove", queue);
-            queue.Remove();
-            ShowInformation("Remove", queue);
             queue.Add(8);
             ShowInformation("Add", queue, 8);
+            //show result
+            for (int i = 1; i <= 10; i++) {
+                bool result = queue.Contains(i);
+                ShowInformation("Contains", i, result);
+            }
         }
 
         private void ShowInformation(string opearation, MyQueue<int> queue, int element) {

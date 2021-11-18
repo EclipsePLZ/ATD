@@ -3,9 +3,11 @@
 namespace ATD {
     class Program {
         static void Main(string[] args) {
-            Tests tests = new Tests();
-            tests.StartRandomDataTesting(5);
+            //Tests tests = new Tests();
+            //tests.StartRandomDataTesting(5);
             //tests.TestPresentation(5);
+            Interface @interface = new Interface();
+            @interface.StartInterface();
         }
     }
 }
