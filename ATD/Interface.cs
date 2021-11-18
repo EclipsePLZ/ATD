@@ -9,6 +9,7 @@ namespace ATD {
         public void StartInterface() {
             int size=0;
             MyQueue<int> queue;
+            bool prog = true;
 
             Console.WriteLine("Введите размер очереди:");
             try {
@@ -23,7 +24,7 @@ namespace ATD {
             Console.WriteLine("Очередь создана\n");
             ShowHelpInformation();
 
-            while (true) {
+            while (prog) {
                 Console.WriteLine("Введите номер операции:");
                 string symb = Console.ReadLine();
                 Console.WriteLine();
@@ -36,12 +37,28 @@ namespace ATD {
                         ShowQueueInformation(queue);
                         break;
                     case "2":
+                        queue.Remove();
+                        ShowQueueInformation(queue);
                         break;
                     case "3":
+                        int peek = queue.Peek();
+                        if (queue.GetSize() != 0) {
+                            Console.WriteLine("Первый элемент в очереди: " + peek);
+                        }
+                        ShowQueueInformation(queue);
                         break;
                     case "4":
+                        Console.WriteLine("Введите элемент, который нужно проверить: ");
+                        int numFind = Convert.ToInt32(Console.ReadLine());
+                        bool resultContain = queue.Contains(numFind);
+                        Console.WriteLine("Результат: " + resultContain);
+                        ShowQueueInformation(queue);
                         break;
                     case "!help":
+                        ShowHelpInformation();
+                        break;
+                    case "!exit":
+                        prog = false;
                         break;
                     default:
                         Console.WriteLine("Операции под таким номером не существует");
@@ -59,7 +76,7 @@ namespace ATD {
         }
 
         private void ShowQueueInformation(MyQueue<int> queue) {
-            Console.WriteLine("Текущий размер очереди: " + queue.GetSize() + "\n");
+            Console.WriteLine("Количество элементов в очереди: " + queue.GetSize() + "\n");
         }
     }
 }
